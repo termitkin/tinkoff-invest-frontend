@@ -1,0 +1,4 @@
+.widget_size_l {
+  min-width: 610px;
+  composes: widget from '../widget.module.css';
+}

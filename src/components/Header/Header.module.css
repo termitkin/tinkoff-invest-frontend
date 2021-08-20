@@ -1,0 +1,7 @@
+.header__currencies {
+  display: flex;
+  gap: 10px;
+  margin-left: auto;
+
+  color: var(--text-color-default);
+}

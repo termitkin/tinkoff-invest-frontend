@@ -1,0 +1,10 @@
+.button_type_instrument {
+  background-color: var(--bg-color-button-instrument);
+
+  composes: button from '../button.module.css';
+}
+
+.button_type_instrument:hover,
+.button_type_instrument:focus {
+  background-color: var(--bg-color-button-instrument-hovered);
+}

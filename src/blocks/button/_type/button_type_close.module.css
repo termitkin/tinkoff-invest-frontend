@@ -1,0 +1,11 @@
+.button_type_close {
+
+  width: 17px;
+  height: 17px;
+
+  background-color: transparent;
+
+  padding: 0;
+
+  composes: button from '../button.module.css';
+}

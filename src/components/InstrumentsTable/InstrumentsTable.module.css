@@ -1,0 +1,41 @@
+.thead {
+  background-color: var(--table-bg-color-header);
+}
+
+.thead th {
+  border: 1px solid var(--table-bg-color-header) !important;
+}
+
+.table {
+  min-width: 100%;
+  border-spacing: 0;
+}
+
+.table * {
+  text-align: left;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--table-text-color-default);
+}
+
+.table th {
+  padding: 3px 10px;
+  text-align: left;
+}
+
+.table td {
+  padding: 3px 10px;
+  text-align: right;
+}
+
+.table th,
+.table td {
+  border-left: 1px solid var(--table-border-color);
+  border-top: 1px solid var(--table-border-color);
+}
+
+.table th:first-child,
+.table td:first-child {
+  border-left: 0;
+  border-bottom: 0;
+}

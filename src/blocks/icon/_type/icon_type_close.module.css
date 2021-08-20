@@ -1,0 +1,9 @@
+.icon_type_close {
+  fill: var(--bg-color-cancel-button);
+
+  composes: icon from '../icon.module.css';
+}
+
+.icon_type_close:hover {
+  fill: var(--bg-color-cancel-button-hovered);
+}

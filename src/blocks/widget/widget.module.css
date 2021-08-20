@@ -1,0 +1,6 @@
+.widget {
+  display: flex;
+  flex-direction: column;
+
+  box-shadow: 0 0 30px -10px #000;
+}

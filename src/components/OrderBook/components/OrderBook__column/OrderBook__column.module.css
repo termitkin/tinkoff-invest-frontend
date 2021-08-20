@@ -1,0 +1,7 @@
+.orderBook__columnHeading {
+  margin: 0 0 15px 0;
+}
+
+.orderBook__columnHeading_type_asks {
+  text-align: right;
+}

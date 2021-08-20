@@ -1,0 +1,57 @@
+.instrument {
+  font-size: 14px;
+  color: #333;
+  user-select: none;
+}
+
+.instrument:nth-of-type(even) {
+  background-color: var(--table-bg-tr-even);
+}
+
+.instrument:nth-of-type(odd) {
+  background-color: var(--table-bg-tr-odd);
+}
+
+.instrumentHeading {
+  padding: 0 !important;
+  text-overflow: ellipsis;
+}
+
+.instrumentFullName {
+  display: none;
+  width: 180px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+
+}
+
+.instrumentButton {
+  min-width: 100%;
+  min-height: 100%;
+  width: 200px;
+  height: 25px;
+
+  background-color: var(--bg-color-button-instrument);
+  cursor: pointer;
+  border: none;
+
+  padding: 3px 10px;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.instrumentButton:hover .instrumentFullName {
+  display: block;
+}
+
+.instrumentButton:hover .instrumentTicker {
+  display: none;
+}
+
+.instrumentButton:hover {
+  background-color: var(--bg-color-button-instrument-hovered);
+  color: var(--text-color-default);
+}

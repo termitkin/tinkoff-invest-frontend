@@ -1,0 +1,13 @@
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.button {
+  display: grid;
+  grid-template-columns: 130px 17px;
+  align-items: center;
+  justify-content: right;
+
+  height: 31px;
+}

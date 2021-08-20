@@ -1,0 +1,5 @@
+.orderBook__columns {
+  display: flex;
+  font-size: 14px;
+  min-height: 434px;
+}

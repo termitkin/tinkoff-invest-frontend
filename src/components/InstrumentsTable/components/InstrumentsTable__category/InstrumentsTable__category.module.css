@@ -1,0 +1,14 @@
+.defaultColor {
+  font-weight: 500;
+  color: var(--text-color-default);
+}
+
+.profit {
+  font-weight: 500;
+  color: var(--text-color-profit) !important;
+}
+
+.loss {
+  font-weight: 500;
+  color: var(--text-color-loss) !important;
+}

@@ -1,0 +1,16 @@
+.button_type_buy {
+  color: var(--text-color-default);
+  background-color: var(--bg-color-button-buy);
+
+  composes: button from '../button.module.css';
+}
+
+.button_type_buy:hover,
+.button_type_buy:focus{
+  background-color: var(--bg-color-button-buy-hovered);
+}
+
+.button_type_buy:disabled {
+  cursor: auto;
+  background-color: var(--bg-color-button-disabled);
+}

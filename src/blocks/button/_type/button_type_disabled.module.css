@@ -1,0 +1,5 @@
+.button_type_disabled {
+  background-color: var(--bg-color-button-disabled);
+
+  composes: button from '../button.module.css';
+}

@@ -1,0 +1,10 @@
+.PlaceOrder__body {
+  min-height: 190px;
+  display: flex;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}

@@ -1,0 +1,40 @@
+.orderClass {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.orderClass:last-child {
+  margin-bottom: 0;
+}
+
+.orderBody {
+  padding: 5px;
+}
+
+.orderHeading {
+  color: var(--text-color-default);
+  padding: 5px;
+
+  display: grid;
+  grid-template-columns: min-content min-content auto auto;
+  gap: 5px;
+
+  max-width: 260px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.orderHeadingBuy {
+  background-color: var(--bg-color-order-buy-header);
+}
+
+.orderHeadingSell {
+  background-color: var(--bg-color-order-sell-header);
+}
+
+.instrumentName {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

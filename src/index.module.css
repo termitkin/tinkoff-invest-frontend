@@ -1,0 +1,66 @@
+body {
+  margin: 0;
+  font-family: Fira Mono, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-color-page);
+  user-select: none;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+:root {
+  --main-red: #ff1745;
+  --main-dimred: #8a001b;
+  --main-green: #00a000;
+  --main-dimgreen: #006700;
+
+  --bg-color-page: #17151f;
+  --bg-color-header: #333;
+  --bg-color-widget: #292832;
+
+  /* buttons */
+
+  --bg-color-button-disabled: #333;
+
+  --bg-color-button-buy: var(--main-green);
+  --bg-color-button-buy-hovered: var(--main-dimgreen);
+
+  --bg-color-button-sell: var(--main-red);
+  --bg-color-button-sell-hovered: var(--main-dimred);
+
+  --bg-color-cancel-button: #fff;
+  --bg-color-cancel-button-hovered: #ccc;
+
+  /* orders */
+
+  --bg-color-order-buy-header: var(--main-green);
+  --bg-color-order-sell-header: var(--main-red);
+
+  /* input */
+
+  --bg-color-input: dimgray;
+  --text-color-input: #fff;
+
+  /* text */
+
+  --text-color-default: #fff;
+  --text-color-profit: var(--main-green);
+  --text-color-loss: var(--main-red);
+
+  /* table */
+  --table-text-color-default: #fff;
+
+  --table-bg-color-header: dimgray;
+  --table-bg-color-subheader: darkslategrey;
+  --table-border-color: dimgray;
+
+  --text-color-button-instrument: #fff;
+  --bg-color-button-instrument: transparent;
+  --bg-color-button-instrument-hovered: midnightblue;
+
+  --table-bg-tr-even: #191a1f;
+  --table-bg-tr-odd: #27292f;
+}

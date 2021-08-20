@@ -1,0 +1,6 @@
+.inputForm {
+  display: grid;
+  grid-template-columns: 270px auto;
+  grid-template-rows: 30px;
+  margin-bottom: 10px;
+}

@@ -1,0 +1,19 @@
+.fieldset {
+  padding: 0;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 20px 0;
+}
+
+.fieldset:last-child {
+  margin: 0;
+}
+
+.legend {
+  padding: 0;
+}
+
+.label {
+  cursor: pointer;
+}

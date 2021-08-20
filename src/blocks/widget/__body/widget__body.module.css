@@ -1,0 +1,6 @@
+.widget__body {
+  color: var(--text-color-default);
+  background-color: var(--bg-color-widget);
+
+  padding: 10px;
+}

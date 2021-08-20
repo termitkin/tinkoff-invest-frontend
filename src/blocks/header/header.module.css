@@ -1,0 +1,14 @@
+.header {
+  color: var(--text-color-default);
+  background-color: var(--bg-color-header);
+
+  display: flex;
+  align-items: center;
+
+  padding: 5px 10px;
+
+  font-size: 14px;
+
+  min-height: 27px;
+  box-sizing: border-box;
+}

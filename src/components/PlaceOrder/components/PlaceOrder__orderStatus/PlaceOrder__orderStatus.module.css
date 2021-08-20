@@ -1,0 +1,15 @@
+.orderStatus {
+  padding: 5px;
+  margin-bottom: 10px;
+  color: var(--text-color-default);
+}
+
+.orderStatusSuccess {
+  background-color: var(--bg-color-button-buy);
+  composes: orderStatus;
+}
+
+.orderStatusFail {
+  background-color: var(--bg-color-button-sell);
+  composes: orderStatus;
+}

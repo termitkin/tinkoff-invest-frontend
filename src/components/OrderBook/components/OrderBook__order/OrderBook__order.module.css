@@ -1,0 +1,35 @@
+.orderBook__order {
+  width: 120px;
+  height: 20px;
+
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+
+  box-sizing: border-box;
+  cursor: pointer;
+  font-family: 'Fira Mono', monospace;
+}
+
+.orderBook__order:hover::before {
+  content: '';
+  width: 120px;
+  height: 20px;
+  position: absolute;
+
+  background-color: rgba(150, 150, 150, 0.3);
+}
+
+.orderBook__order_type_bids {
+  flex-direction: row;
+  padding-right: 5px;
+}
+.orderBook__order_type_asks {
+  flex-direction: row-reverse;
+  padding-left: 5px;
+}
+
+.orderBook__price,
+.orderBook__quantity {
+  display: block;
+}

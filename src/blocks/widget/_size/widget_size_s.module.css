@@ -1,0 +1,4 @@
+.widget_size_s {
+  width: 260px;
+  composes: widget from '../widget.module.css';
+}

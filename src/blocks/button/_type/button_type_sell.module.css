@@ -1,0 +1,16 @@
+.button_type_sell {
+  color: var(--text-color-default);
+  background-color: var(--bg-color-button-sell);
+
+  composes: button from '../button.module.css';
+}
+
+.button_type_sell:hover,
+.button_type_sell:focus {
+  background-color: var(--bg-color-button-sell-hovered);
+}
+
+.button_type_sell:disabled {
+  cursor: auto;
+  background-color: var(--bg-color-button-disabled);
+}
