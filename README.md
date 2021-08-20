@@ -2,6 +2,9 @@
 
 Это фронтенд часть сервиса tinkoff-invest. Репозиторий с бекендом [здесь](https://github.com/termitkin/tinkoff-invest-backend)
 
+![tinkoff-invest-frontend-readme-image](https://user-images.githubusercontent.com/17779377/130222028-d46a1f20-510e-4b8d-8267-9a34cd7a82da.jpg)
+
+
 - Докер образ [бекенда](https://hub.docker.com/repository/docker/termitkin/tinkoff-invest-backend)
 - Докер образ [фронтенда](https://hub.docker.com/repository/docker/termitkin/tinkoff-invest-frontend)
 
