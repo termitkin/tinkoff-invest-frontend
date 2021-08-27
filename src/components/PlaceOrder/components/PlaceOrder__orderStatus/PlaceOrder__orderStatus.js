@@ -45,11 +45,38 @@ const PlaceOrder__orderStatus = () => {
     }
   }, [limitOrderPlaced, marketOrderPlaced, placeLimitOrder, placeMarketOrder]);
 
+  let resolve = true;
+  let statusMessage;
+
+  if (
+    placeLimitOrder.fetchedData.status === 'Rejected' ||
+    placeMarketOrder.fetchedData.status === 'Rejected' ||
+    (!placeLimitOrder.ok && !placeMarketOrder.ok) ||
+    placeLimitOrder.error ||
+    placeMarketOrder.error
+  ) {
+    resolve = false;
+  }
+
+  if (placeLimitOrder.fetchedData.status === 'Rejected') {
+    statusMessage = placeLimitOrder.fetchedData.message;
+  } else if (placeMarketOrder.fetchedData.status === 'Rejected') {
+    statusMessage = placeMarketOrder.fetchedData.message;
+  } else if (placeLimitOrder.error) {
+    statusMessage = placeLimitOrder.fetchedData;
+  } else if (placeMarketOrder.error) {
+    statusMessage = placeMarketOrder.fetchedData;
+  } else if (!placeLimitOrder.ok && !placeMarketOrder.ok) {
+    statusMessage = 'Что-то пошло не так';
+  } else if (placeLimitOrder.fetchedData.status === 'Fill' || placeMarketOrder.fetchedData.status === 'Fill') {
+    statusMessage = 'Заявка исполнена';
+  } else {
+    statusMessage = 'Заявка успешно размещена';
+  }
+
   return (
     (limitOrderPlaced !== 0 || marketOrderPlaced !== 0) && (
-      <div className={placeLimitOrder.ok || placeMarketOrder.ok ? orderStatusSuccess : orderStatusFail}>
-        {placeLimitOrder.ok || placeMarketOrder.ok ? 'Заявка успешно размещена' : 'Что-то пошло не так'}
-      </div>
+      <div className={resolve ? orderStatusSuccess : orderStatusFail}>{statusMessage}</div>
     )
   );
 };
