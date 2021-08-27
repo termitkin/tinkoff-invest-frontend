@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createSelector } from 'reselect';
 import { orderStatusSuccess, orderStatusFail } from './PlaceOrder__orderStatus.module.css';
+import fetchData from '../../../../services/actions/fetchData';
 
 const selector = createSelector(
   (store) => store.api.placeLimitOrder,
@@ -27,6 +28,8 @@ const PlaceOrder__orderStatus = () => {
           type: 'ORDER_PLACED',
           payload: { orderId: placeLimitOrder.fetchedData.orderId || placeMarketOrder.fetchedData.orderId },
         });
+
+        dispatch(fetchData('getPortfolioCurrencies'));
       }, 500);
 
       const timeout = setTimeout(() => {
