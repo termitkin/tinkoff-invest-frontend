@@ -15,12 +15,10 @@ const selector = createSelector(
   (store) => store.priceFromOrderBook.price,
   (store) => store.portfolioCurrenciesChanged,
   (store) => store.api.getInstrumentInfo,
-  (store) => store.api.placeLimitOrder,
-  (priceFromOrderBook, portfolioCurrencies, getInstrumentInfo, placeLimitOrder) => ({
+  (priceFromOrderBook, portfolioCurrencies, getInstrumentInfo) => ({
     priceFromOrderBook,
     portfolioCurrencies,
     getInstrumentInfo,
-    placeLimitOrder,
   })
 );
 
@@ -33,14 +31,17 @@ const PlaceOrder = () => {
   });
   const { priceFromOrderBook, portfolioCurrencies, getInstrumentInfo } = useSelector(selector);
   const { orderType, price, quantity } = state;
-  const { ticker } = getInstrumentInfo.fetchedData;
-  const { tradeStatus } = getInstrumentInfo.fetchedData;
+  const { ticker, tradeStatus, lastPrice } = getInstrumentInfo.fetchedData;
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dragElement(document.querySelector('.placeOrderDraggable'), 'placeOrderDraggable');
   }, []);
+
+  useEffect(() => {
+    setState({ ...state, price: lastPrice || 0 });
+  }, [lastPrice]);
 
   useEffect(() => {
     if (priceFromOrderBook) {
@@ -72,7 +73,8 @@ const PlaceOrder = () => {
                 ? 'Торги этим инструментом приостановлены'
                 : 'Инструмент не выбран'}
             </div>
-          )) || (
+          )) ||
+          (getInstrumentInfo.isLoaded && (
             <form className={form} name="placeOrder" onSubmit={handleFormSubmit}>
               <PlaceOrder__orderTypeSelector getInstrumentInfo={getInstrumentInfo} state={state} setState={setState} />
               <PlaceOrder__quantityAndPrice getInstrumentInfo={getInstrumentInfo} state={state} setState={setState} />
@@ -81,9 +83,10 @@ const PlaceOrder = () => {
                 portfolioCurrencies={portfolioCurrencies}
                 state={state}
               />
-              <PlaceOrder__footer getInstrumentInfo={getInstrumentInfo} state={state} />
+              <PlaceOrder__footer getInstrumentInfo={getInstrumentInfo} state={state} setState={setState} />
             </form>
-          )}
+          )) ||
+          ''}
       </div>
     </article>
   );

@@ -15,25 +15,18 @@ const selector = createSelector(
 
 const PlaceOrder__buttons = React.memo(function ({ getInstrumentInfo, portfolioCurrencies, state }) {
   const { placeLimitOrder, placeMarketOrder } = useSelector(selector);
-  let currency, ticker, tradeStatus, balance, lots, instrumentType;
-
-  if (getInstrumentInfo.isLoaded) {
-    currency = getInstrumentInfo.fetchedData.currency;
-    ticker = getInstrumentInfo.fetchedData.ticker;
-    tradeStatus = getInstrumentInfo.fetchedData.tradeStatus;
-    balance = getInstrumentInfo.fetchedData.balance;
-    lots = getInstrumentInfo.fetchedData.lots;
-    instrumentType = getInstrumentInfo.fetchedData.instrumentType;
-  }
+  const { currency, ticker, tradeStatus, balance, lots, instrumentType } = getInstrumentInfo.fetchedData;
 
   const { orderType, price, quantity, sum } = state;
   const currentCurrency = portfolioCurrencies.find((curr) => curr.currency === currency);
   let availableCash = 0;
 
-  if (currentCurrency?.blocked) {
-    availableCash = currentCurrency?.balance - currentCurrency?.blocked;
-  } else {
-    availableCash = currentCurrency?.balance;
+  if (currentCurrency) {
+    if (currentCurrency.blocked) {
+      availableCash = currentCurrency.balance - currentCurrency.blocked;
+    } else {
+      availableCash = currentCurrency.balance;
+    }
   }
 
   let buyButtonDisabled = false;
@@ -49,6 +42,10 @@ const PlaceOrder__buttons = React.memo(function ({ getInstrumentInfo, portfolioC
   }
 
   if (instrumentType === 'Currency' ? quantity > balance : quantity > lots) {
+    sellButtonDisabled = true;
+  }
+
+  if (!balance && !lots) {
     sellButtonDisabled = true;
   }
 

@@ -3,12 +3,7 @@ import { fieldset, legend, label } from './PlaceOrder__orderTypeSelector.module.
 
 const PlaceOrder__orderTypeSelector = React.memo(function ({ getInstrumentInfo, state, setState }) {
   const { orderType } = state;
-  let ticker, tradeStatus;
-
-  if (getInstrumentInfo.isLoaded) {
-    ticker = getInstrumentInfo.fetchedData.ticker;
-    tradeStatus = getInstrumentInfo.fetchedData.tradeStatus;
-  }
+  const { ticker, tradeStatus } = getInstrumentInfo.fetchedData;
 
   const handleOrderTypeClick = (e) => {
     setState({ ...state, orderType: e.target.value });

@@ -1,20 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { fieldset, legend, label, labelText, input } from './styles';
 
-const PlaceOrder__quantityAndPrice = React.memo(function ({ getInstrumentInfo, state, setState }) {
+const PlaceOrder__quantityAndPrice = ({ getInstrumentInfo, state, setState }) => {
   const { orderType, price, quantity } = state;
-  let ticker, lastPrice, minPriceIncrement, tradeStatus;
-
-  if (getInstrumentInfo.isLoaded) {
-    ticker = getInstrumentInfo.fetchedData.ticker;
-    lastPrice = getInstrumentInfo.fetchedData.lastPrice;
-    minPriceIncrement = getInstrumentInfo.fetchedData.minPriceIncrement;
-    tradeStatus = getInstrumentInfo.fetchedData.tradeStatus;
-  }
-
-  useEffect(() => {
-    setState({ ...state, price: lastPrice || 0 });
-  }, [ticker, lastPrice]);
+  const { ticker, minPriceIncrement, tradeStatus } = getInstrumentInfo.fetchedData;
 
   const handlePriceChange = (e) => {
     setState({ ...state, price: Number.parseFloat(e.target.value) });
@@ -54,6 +43,6 @@ const PlaceOrder__quantityAndPrice = React.memo(function ({ getInstrumentInfo, s
       </label>
     </fieldset>
   );
-});
+};
 
 export default PlaceOrder__quantityAndPrice;

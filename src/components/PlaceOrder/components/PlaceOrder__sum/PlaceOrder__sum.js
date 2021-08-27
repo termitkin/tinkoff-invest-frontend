@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-const PlaceOrder__sum = React.memo(function ({ instrumentType, quantityInOneLot, currencySign, tradeStatus, state }) {
+const PlaceOrder__sum = ({ instrumentType, quantityInOneLot, currencySign, tradeStatus, state, setState }) => {
   const { price, quantity } = state;
   let sumToRender;
 
@@ -10,6 +10,10 @@ const PlaceOrder__sum = React.memo(function ({ instrumentType, quantityInOneLot,
     sumToRender = quantity * quantityInOneLot * price;
   }
 
+  useEffect(() => {
+    setState({ ...state, sum: sumToRender });
+  }, [sumToRender]);
+
   return (
     (tradeStatus === 'NormalTrading' && quantity && price && (
       <div>
@@ -18,6 +22,6 @@ const PlaceOrder__sum = React.memo(function ({ instrumentType, quantityInOneLot,
     )) ||
     ''
   );
-});
+};
 
 export default PlaceOrder__sum;

@@ -3,15 +3,8 @@ import PlaceOrder__sum from '../PlaceOrder__sum/PlaceOrder__sum';
 import PlaceOrder__orderStatus from '../PlaceOrder__orderStatus/PlaceOrder__orderStatus';
 import { placeOrder__footer } from './PlaceOrder__footer.module.css';
 
-const PlaceOrder__footer = React.memo(function ({ getInstrumentInfo, state }) {
-  let currencySign, quantityInOneLot, tradeStatus, instrumentType;
-
-  if (getInstrumentInfo.isLoaded) {
-    currencySign = getInstrumentInfo.fetchedData.currencySign;
-    quantityInOneLot = getInstrumentInfo.fetchedData.quantityInOneLot;
-    tradeStatus = getInstrumentInfo.fetchedData.tradeStatus;
-    instrumentType = getInstrumentInfo.fetchedData.instrumentType;
-  }
+const PlaceOrder__footer = React.memo(function ({ getInstrumentInfo, state, setState }) {
+  const { currencySign, quantityInOneLot, tradeStatus, instrumentType } = getInstrumentInfo.fetchedData;
 
   return (
     <div className={placeOrder__footer}>
@@ -22,6 +15,7 @@ const PlaceOrder__footer = React.memo(function ({ getInstrumentInfo, state }) {
         currencySign={currencySign}
         tradeStatus={tradeStatus}
         state={state}
+        setState={setState}
       />
     </div>
   );
