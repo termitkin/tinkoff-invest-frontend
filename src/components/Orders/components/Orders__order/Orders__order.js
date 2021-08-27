@@ -27,6 +27,7 @@ const Orders__order = ({ order, canceledOrders }) => {
 
       setTimeout(() => {
         dispatch(fetchData('getOrders'));
+        dispatch(fetchData('getPortfolioCurrencies'));
       }, 4000);
     }
   };
