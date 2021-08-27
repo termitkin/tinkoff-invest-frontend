@@ -12,7 +12,10 @@ const OrderBook__body = ({ wsData, getInstrumentInfo }) => {
 
   return (
     <div className={`${widget__body} ${orderBook__columns}`}>
-      {((getInstrumentInfo.isLoading || wsData.figi !== getInstrumentInfo.fetchedData.figi) && <Loader size="big" />) ||
+      {((getInstrumentInfo.isLoading ||
+        (wsData.figi !== getInstrumentInfo.fetchedData.figi && tradeStatus === 'NormalTrading')) && (
+        <Loader size="big" />
+      )) ||
         ((!ticker || tradeStatus === 'NotAvailableForTrading') && (
           <div className={widget__empty}>
             {tradeStatus === 'NotAvailableForTrading'
