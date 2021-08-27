@@ -27,6 +27,10 @@ const Header = () => {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    dispatch({ type: 'PORTFOLIO_CURRENCIES_CHANGED', payload: [...Object.values(currencies.fetchedData)] });
+  }, [currencies.fetchedData]);
+
   return (
     <header className={header}>
       <div>{(balance.isLoading && <Loader size="small" />) || balance.fetchedData}</div>
