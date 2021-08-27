@@ -12,6 +12,7 @@ export const socketMiddleware = (wsUrl) => {
 
       const handleSocketClose = (e) => {
         dispatch({ type: 'WS_CONNECTION_CLOSED', payload: e });
+        dispatch({ type: 'CONNECTION_ERROR' });
       };
 
       const handleSocketMessage = (e) => {
@@ -20,6 +21,7 @@ export const socketMiddleware = (wsUrl) => {
 
       const handleSocketError = (e) => {
         dispatch({ type: 'WS_CONNECTION_ERROR', payload: e });
+        dispatch({ type: 'CONNECTION_ERROR' });
       };
 
       if (type === 'WS_CONNECTION_START') {

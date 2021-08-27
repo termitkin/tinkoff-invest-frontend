@@ -25,9 +25,18 @@ const fetchData = (dataType, params, localData) => {
     })
       .then((res) => res.json())
       .then((res) => {
-        const { ok, data } = JSON.parse(res);
+        const { ok, error, data } = JSON.parse(res);
 
-        if (ok) {
+        if (error) {
+          dispatch({
+            type: 'SUCCESS_FETCH_DATA',
+            dataType,
+            error,
+            fetchedData: data.text,
+            localData,
+            ok,
+          });
+        } else if (ok) {
           dispatch({
             type: 'SUCCESS_FETCH_DATA',
             dataType,
@@ -35,24 +44,15 @@ const fetchData = (dataType, params, localData) => {
             localData,
             ok,
           });
-          return;
+        } else {
+          dispatch({
+            type: 'FAILED_FETCH_DATA',
+          });
         }
-
-        dispatch({
-          type: 'FAILED_FETCH_DATA',
-          requestFailedMessage: data.text,
-          fetchedData: {},
-          dataType,
-          ok,
-        });
       })
       .catch(() => {
         dispatch({
-          type: 'FAILED_FETCH_DATA',
-          requestFailedMessage: 'На сервере что-то пошло не так',
-          fetchedData: {},
-          dataType,
-          ok: false,
+          type: 'CONNECTION_ERROR',
         });
       });
   };

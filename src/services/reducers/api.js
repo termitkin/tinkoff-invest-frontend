@@ -2,35 +2,30 @@ const initialState = {
   getPortfolio: {
     isLoading: false,
     requestFailed: false,
-    requestFailedMessage: '',
     fetchedData: {},
     dataType: 'getPortfolio',
   },
   getOrders: {
     isLoading: false,
     requestFailed: false,
-    requestFailedMessage: '',
     fetchedData: [],
     dataType: 'getOrders',
   },
   cancelOrder: {
     isLoading: false,
     requestFailed: false,
-    requestFailedMessage: '',
     fetchedData: {},
     dataType: 'cancelOrder',
   },
   getBalance: {
     isLoading: false,
     requestFailed: false,
-    requestFailedMessage: '',
     fetchedData: '',
     dataType: 'getBalance',
   },
   getPortfolioCurrencies: {
     isLoading: false,
     requestFailed: false,
-    requestFailedMessage: '',
     fetchedData: [],
     dataType: 'getPortfolioCurrencies',
   },
@@ -38,7 +33,6 @@ const initialState = {
     isLoading: false,
     isLoaded: false,
     requestFailed: false,
-    requestFailedMessage: '',
     fetchedData: {},
     dataType: 'getInstrumentInfo',
   },
@@ -46,7 +40,6 @@ const initialState = {
     isLoading: false,
     isLoaded: false,
     requestFailed: false,
-    requestFailedMessage: '',
     fetchedData: {},
     dataType: 'placeLimitOrder',
   },
@@ -54,18 +47,13 @@ const initialState = {
     isLoading: false,
     isLoaded: false,
     requestFailed: false,
-    requestFailedMessage: '',
     fetchedData: {},
     dataType: 'placeMarketOrder',
   },
 };
 
 const api = (state = initialState, action) => {
-  let { type, fetchedData, requestFailedMessage, dataType, localData, ok } = action;
-
-  if (dataType === 'getInstrumentInfo') {
-    fetchedData = { ...fetchedData, ...localData };
-  }
+  let { type, error, fetchedData, dataType, localData, ok } = action;
 
   if (type === 'DATA_IS_LOADING') {
     return {
@@ -80,25 +68,19 @@ const api = (state = initialState, action) => {
       },
     };
   } else if (type === 'SUCCESS_FETCH_DATA') {
+    if (dataType === 'getInstrumentInfo') {
+      fetchedData = { ...fetchedData, ...localData };
+    }
+
     return {
       ...state,
       [dataType]: {
+        error,
         dataType,
         fetchedData,
         isLoading: false,
         isLoaded: true,
         requestFailed: false,
-        ok,
-      },
-    };
-  } else if (type === 'FAILED_FETCH_DATA') {
-    return {
-      ...state,
-      [dataType]: {
-        requestFailed: true,
-        isLoading: false,
-        requestFailedMessage,
-        dataType,
         ok,
       },
     };
