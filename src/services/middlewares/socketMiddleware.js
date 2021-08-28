@@ -1,3 +1,5 @@
+let lastReconnection = null;
+
 export const socketMiddleware = (wsUrl) => {
   return (store) => {
     let socket = null;
@@ -12,7 +14,13 @@ export const socketMiddleware = (wsUrl) => {
 
       const handleSocketClose = (e) => {
         dispatch({ type: 'WS_CONNECTION_CLOSED', payload: e });
-        dispatch({ type: 'CONNECTION_ERROR' });
+
+        if (lastReconnection === null || Number(new Date()) - lastReconnection > 5000) {
+          lastReconnection = Number(new Date());
+          socket = new WebSocket(wsUrl);
+        } else {
+          dispatch({ type: 'CONNECTION_ERROR' });
+        }
       };
 
       const handleSocketMessage = (e) => {
